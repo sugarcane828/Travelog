@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>WA / 2026 · 西澳自驾旅行手册</title>
+<meta content="#f5f1e8" name="theme-color"/>
+<style>
+:root{--bg:#f5f1e8;--paper:#fffdf7;--ink:#222b31;--muted:#777c78;--line:#e3ddd2;--blue:#2178bd;--green:#29996d;--orange:#bd691d;--red:#b84e43;--gold:#b5892f;--shadow:0 8px 28px rgba(54,45,34,.08);--r:21px}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+a{color:inherit} .app{max-width:980px;margin:auto} .wrap{padding:12px 14px 64px}
+.hero{min-height:250px;padding:24px;border-radius:0 0 28px 28px;color:white;display:flex;align-items:flex-end;position:relative;overflow:hidden;
+background:linear-gradient(90deg,rgba(7,45,70,.60),rgba(7,45,70,.08)),url("https://commons.wikimedia.org/wiki/Special:FilePath/White%20beach%20Lucky%20Bay%20in%20Esperance.jpg?width=1200") center/cover}
+.hero h1{font-size:clamp(36px,9vw,62px);line-height:1;margin:0;text-shadow:0 2px 18px #0005}
+.hero p{font-size:16px;font-weight:650;margin:8px 0 0;text-shadow:0 2px 10px #0007}
+.count{position:absolute;right:14px;top:14px;background:#fffE;color:#17466a;padding:10px 13px;border-radius:16px;text-align:center;box-shadow:var(--shadow)}
+.count b{display:block;font-size:28px;line-height:1.1}
+.tabs{position:sticky;top:0;z-index:30;display:flex;gap:8px;overflow:auto;padding:10px 12px;background:#f5f1e8EE;backdrop-filter:blur(10px);border-bottom:1px solid #e2ddd4}
+.tabs a{white-space:nowrap;text-decoration:none;background:#fff;border:1px solid #dcd7ce;border-radius:999px;padding:8px 13px;font-weight:750}
+h2{font-size:24px;margin:28px 2px 11px} h3{margin:0 0 8px}
+.card{background:var(--paper);border:1px solid #e7e0d4;border-radius:var(--r);padding:17px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px} .muted{color:var(--muted)} .small{font-size:13px}
+.badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:800;margin-left:5px}
+.ok{background:#def3e8;color:#25714f} .todo{background:#fff0ce;color:#805e13} .risk{background:#fce2df;color:#8c3830} .fit{background:#e0f0ff;color:#17659f} .skip{background:#eeeae2;color:#777064}
+.flight{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px} .airport{font-size:32px;font-weight:900} .mid{text-align:center;color:var(--muted);font-weight:700}
+.route-map svg{width:100%;height:auto;display:block}
+.day{padding:0;margin-bottom:13px;overflow:hidden} .day summary{list-style:none;cursor:pointer;padding:15px 17px;display:flex;align-items:center;gap:11px}
+.day summary::-webkit-details-marker{display:none} .day[open] summary{background:#fff8ed;border-bottom:1px solid #ece4d7}
+.date{width:58px;min-width:58px;height:58px;border-radius:15px;background:var(--blue);color:#fff;display:grid;place-items:center;text-align:center;line-height:1.05;font-weight:900;font-size:18px}
+.date span{font-size:12px} .dtitle b{font-size:19px;display:block} .dtitle span{font-size:13px;color:var(--muted)}
+.daybody{padding:13px 17px 18px} .dayroute{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#eff7f1;border:1px solid #dcebdc;border-radius:13px;padding:9px 11px;margin-bottom:14px}
+.dayroute a{color:#176ca9;text-decoration:none;font-weight:800}
+.timeline{position:relative} .timeline:before{content:"";position:absolute;left:55px;top:5px;bottom:8px;width:2px;background:#d5e4f2}
+.event{display:grid;grid-template-columns:44px 1fr;gap:18px;padding-bottom:18px;position:relative} .time{font-weight:900;font-variant-numeric:tabular-nums}
+.body{position:relative} .body:before{content:"";position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:#2389d2;border:3px solid white;box-shadow:0 0 0 1px #2389d2}
+.body> b{font-size:17px} .desc{margin-top:3px;color:var(--muted)} .place{font-weight:850;text-decoration:none;border-bottom:2px dotted #b77736}
+.meal{padding:9px 11px;background:#f4faf3;border:1px solid #deebdc;border-radius:12px}
+.spot-photo{margin:9px 0 0;border:1px solid #e1ddd5;border-radius:14px;overflow:hidden;background:#eee}
+.spot-photo img{width:100%;height:220px;display:block;object-fit:cover} .spot-photo figcaption{background:#faf8f3;padding:5px 8px;font-size:10px;color:#85837c}
+.spot-photo figcaption a{color:#6c7376}
+.food-pick{margin-top:9px;padding:9px 11px;border-radius:12px;background:#fff7e9;border:1px solid #f0dfbf}
+.food-pick b{color:#9a5919}
+.hotel{margin-top:10px;padding:11px 13px;background:#faf6ef;border:1px dashed #d9cfbf;border-radius:13px}
+.guide-filter{display:grid;grid-template-columns:110px 1fr;gap:7px 12px;padding:11px 0;border-bottom:1px dashed #ded9cf}
+.guide-filter:last-child{border-bottom:0} .guide-filter strong{font-size:14px}
+.checklist{list-style:none;margin:0;padding:0} .checkrow{display:grid;grid-template-columns:34px 1fr;gap:9px;padding:11px 0;border-bottom:1px dashed #dedad0} .checkrow:last-child{border-bottom:0}
+.checkrow input{appearance:none;width:28px;height:28px;border:2px solid #b8b7ae;border-radius:9px;background:#fff;position:relative;cursor:pointer}
+.checkrow input:checked{background:var(--green);border-color:var(--green)} .checkrow input:checked:after{content:"✓";color:#fff;font-weight:900;font-size:20px;position:absolute;left:5px;top:-2px}
+.checkrow input:checked+label{text-decoration:line-through;color:#99978f}
+.progress{height:10px;background:#e5e2da;border-radius:999px;overflow:hidden} .progress i{height:100%;display:block;width:0;background:var(--green)}
+.inspiration{border-left:4px solid var(--gold);padding-left:13px} .area-intro{margin:0 0 14px;padding:12px 13px;background:#eef6f4;border:1px solid #d8e8e3;border-radius:14px}.options{margin:10px 0;padding:10px 12px;background:#f8f4ec;border:1px solid #e8dfd0;border-radius:13px}.choice{display:inline-block;margin:3px 4px 3px 0;padding:4px 8px;border-radius:999px;background:#fff;border:1px solid #ddd5c7;font-size:12px;font-weight:750}.countline{font-size:12px;font-variant-numeric:tabular-nums}.inspiration{border-left:4px solid var(--gold);padding-left:13px} .note{border-left:4px solid var(--red);background:#fff4f2;padding:9px 11px;border-radius:10px}
+@media(max-width:720px){.hero{min-height:215px;padding:18px}.grid2{grid-template-columns:1fr}.spot-photo img{height:185px}.guide-filter{grid-template-columns:95px 1fr}}
+
+:root{--navy:#182b3e;--teal:#12998e;--teal-soft:#dff8f3;--cream:#f7f3ec;--orange-soft:#fff1df;--text:#182436;--sub:#6f7b8d}
+body{background:#f6f7f8;color:var(--text);font-size:16px;line-height:1.72;letter-spacing:.005em}
+.app{max-width:940px;background:#fbfcfd;min-height:100vh}
+.wrap{padding:34px 26px 88px}
+.hero-v6{min-height:310px;border-radius:0;background:linear-gradient(145deg,#172b3f,#233e57);display:block;padding:30px 30px 28px;color:#fff;position:relative;overflow:hidden}
+.hero-v6:after{content:"";position:absolute;width:330px;height:330px;border:1px solid #ffffff1c;border-radius:50%;right:-90px;top:-70px;box-shadow:0 0 0 55px #ffffff08,0 0 0 110px #ffffff05}
+.hero-kicker{font-size:15px;letter-spacing:.22em;font-weight:800;color:#9fb2c7;margin-bottom:44px}
+.hero-copy h1{font-size:clamp(44px,8vw,70px);line-height:.95;letter-spacing:-.04em;margin:0 0 14px}.hero-copy p{margin:0;color:#c5d2df;font-weight:600}
+.hero-count{margin-top:46px;background:#ffffff10;border:1px solid #ffffff13;border-radius:18px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:20px;max-width:650px}.hero-count span{color:#b9c7d4}.hero-count strong{font-size:22px;color:#ffc84d;font-variant-numeric:tabular-nums}
+.tabs{padding:0 24px;height:68px;align-items:center;gap:29px;background:#ffffffF5;border-bottom:1px solid #e2e7ec}.tabs a{background:none;border:0;border-radius:0;padding:0;color:#132036;font-size:17px;font-weight:820;letter-spacing:.02em}.tabs a:first-child:before{content:"WA / 2026  ";color:#758297;letter-spacing:.18em;margin-right:10px;font-size:13px}
+h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.section-eyebrow{font-size:14px;letter-spacing:.25em;color:var(--teal);font-weight:900;margin:8px 0 12px}
+.overview-card{background:#f1e7d2;border:1px solid #dccca8;border-radius:28px;padding:28px 30px 24px;box-shadow:none;margin-bottom:54px}.overview-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.overview-head h3{font-size:31px;margin:0 0 7px;color:#6c4027}.overview-head p{margin:0;color:#8d6d55;font-size:14px}.route-stat{text-align:right;color:#7d5d45;font-weight:750}.route-stat span{font-size:12px;font-weight:550}.wa-map-shell{margin:25px 0 17px;background:#fff;border-radius:22px;padding:10px;box-shadow:0 8px 20px #6b563214}.wa-map-shell svg{display:block;width:100%;height:auto;border-radius:16px}.route-footer{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#7f654f;font-size:14px}
+.grid2{gap:16px}.card{border:1px solid #dfe5eb;border-radius:24px;box-shadow:none;background:#fff}.flight{min-height:84px}.airport{font-size:30px;color:var(--navy)}
+.drive-section{margin:60px 0}.drive-section>h2{margin-top:0}.drive-hero{background:var(--navy);color:#fff;border-radius:28px;padding:28px 30px;display:grid;grid-template-columns:1fr auto;gap:20px 24px}.drive-small{color:#9fb2c5;letter-spacing:.16em;font-size:12px;font-weight:800}.drive-hero h3{font-size:31px;line-height:1.08;margin:8px 0 10px}.drive-hero h3 small{font-size:16px;color:#c5d0db;font-weight:650}.drive-hero p{color:#9fb2c5;margin:0}.drive-pill{background:#ffe8a9;color:#8f4d19;border-radius:12px;padding:9px 13px;text-align:center;font-weight:850;align-self:start}.drive-pill small{font-size:11px}.drive-row{grid-column:1/-1;border-top:1px solid #ffffff18;padding-top:18px;display:flex;justify-content:space-between;gap:20px}.drive-row span{color:#96a7b8}.drive-row b{text-align:right;font-size:16px}.drive-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}.drive-tabs article{background:#fff;border-top:3px solid var(--teal);padding:16px 18px;border-radius:0 0 18px 18px}.drive-tabs h4{color:var(--teal);font-size:17px;margin:0 0 12px}.drive-tabs ul{margin:0;padding-left:18px;color:#48566a;font-size:14px}.drive-tabs li{margin:8px 0}.drive-note{margin-top:16px;padding:14px 16px;border-radius:14px;background:#fff2dd;color:#76502b;font-size:13px}
+#days-section{margin-top:62px}.day{margin-bottom:26px;border-radius:25px}.day summary{padding:24px 28px;display:flex;justify-content:space-between;align-items:center;background:#fff}.day[open] summary{background:#fff;border-bottom:1px solid #e9edf1}.summary-main{min-width:0}.daylabel{font-size:18px;color:var(--teal);font-weight:900;letter-spacing:.02em}.summary-route{font-size:22px;font-weight:820;margin-top:5px;letter-spacing:-.015em}.summary-meta{font-size:14px;color:#7a8797;margin-top:3px}.summary-side{display:flex;gap:12px;align-items:center;flex-shrink:0}.summary-side .badge{margin:0}.chev{font-size:24px;color:#758296;display:inline-block;transition:.2s}.day[open] .chev{transform:rotate(180deg)}
+.daybody{padding:22px 28px 28px}.dayroute{border:0;background:#e9f7f4;border-radius:16px;padding:12px 16px}.timeline:before{left:55px;background:#dbe5eb}.event{grid-template-columns:44px 1fr;gap:22px;padding-bottom:24px}.time{color:#677488;font-weight:700}.body:before{background:var(--teal);border-color:#fff;box-shadow:0 0 0 1px var(--teal)}.body>b{font-size:19px}.desc{font-size:15px;color:#6f7b8d}.place{border-bottom:0;color:#17263a}.place:after{content:"  ↗";color:var(--teal);font-size:13px}.meal{border:0;background:#f0faf7;border-radius:13px}.hotel{border:0;background:#edf7f5;color:#325f59}.badge.todo{background:#fff2e6;color:#c1642e}.badge.risk{background:#fff0e8;color:#a94e3c}.badge.ok{background:#e5f8f2;color:#287664}.badge.fit{background:#def7f3;color:#24756d}
+.spot-photo{border:0;border-radius:18px;background:#eef1f3;min-height:130px}.spot-photo img{border-radius:18px;height:250px}.spot-photo img:not([src]),.spot-photo img[src=""]{display:none}.spot-photo figcaption{font-size:10px;background:#f7f8f9;color:#9098a2}.area-intro{background:#edf8f6;border:0}.options{background:#f7f7f6;border:0}
+#guide{margin-top:62px}.guide-filter{padding:15px 0}.checkrow{padding:15px 0}.checkrow input{border-radius:8px}.progress{background:#e8ecef}.progress i{background:var(--teal)}
+@media(max-width:700px){.wrap{padding:28px 18px 72px}.tabs{gap:22px;padding:0 18px}.tabs a{font-size:15px}.tabs a:first-child:before{display:none}.hero-v6{min-height:280px;padding:26px 20px}.hero-copy h1{font-size:46px}.hero-count{display:block}.hero-count strong{display:block;margin-top:6px;font-size:20px}.overview-card{padding:22px 18px}.overview-head{display:block}.route-stat{text-align:left;margin-top:10px}.drive-tabs{grid-template-columns:1fr}.drive-hero{padding:23px 20px}.drive-hero h3{font-size:25px}.day summary{padding:20px 20px}.daybody{padding:18px 20px 24px}.summary-route{font-size:19px}.summary-meta{font-size:13px}.spot-photo img{height:210px}}
+
+#toTop{position:fixed;right:22px;bottom:24px;width:52px;height:52px;border-radius:50%;background:#182b3e;color:#fff;text-decoration:none;display:grid;place-items:center;font-size:28px;z-index:50;box-shadow:0 10px 25px #15283b30}.photo-failed{min-height:88px!important;background:linear-gradient(135deg,#eef4f5,#f7f4ed)!important;border:1px dashed #ced8db!important;display:flex;align-items:center;justify-content:center;color:#7c8793;padding:18px;text-align:center;font-size:13px}.photo-failed figcaption{display:none}@media(max-width:700px){#toTop{right:16px;bottom:18px;width:48px;height:48px}}
+.weatherlook{margin:14px 0 18px;padding:15px 16px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#f7fbfd,#fffaf1);display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center}.weather-main{display:flex;gap:10px;align-items:center}.weather-icon{font-size:31px}.weather-temp{font-size:22px;font-weight:800;letter-spacing:-.4px}.weather-desc{font-size:12px;color:var(--muted);margin-top:2px}.look-title{font-size:12px;font-weight:800;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}.look-text{font-size:13px;line-height:1.65;color:var(--ink)}.weather-note{font-size:11px;color:var(--muted);margin-top:6px}@media(max-width:620px){.weatherlook{grid-template-columns:1fr}.weather-main{border-bottom:1px dashed var(--line);padding-bottom:10px}}
+
+.route-grid{margin:12px 0 18px;border:1px solid #dfe9e7;border-radius:16px;background:#fbfdfc;overflow:hidden}
+.route-grid-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#edf7f5;border-bottom:1px solid #dfe9e7}
+.route-grid-head b{font-size:14px;letter-spacing:.02em}.route-grid-head a{color:#087f73;text-decoration:none;font-weight:800;font-size:13px}
+.route-row{display:grid;grid-template-columns:1fr 92px;gap:10px;padding:10px 14px;border-bottom:1px solid #edf1f0;align-items:center}
+.route-row:last-child{border-bottom:0}.route-leg{font-size:13px;font-weight:700;color:#173b39}.route-leg span{display:block;font-size:11px;color:#71807d;font-weight:500;margin-top:3px}.route-time{text-align:right;font-size:12px;font-weight:800;color:#087f73}.route-total{padding:11px 14px;background:#f4f8f7;font-size:12px;color:#45605c;font-weight:700}
+@media(max-width:600px){.route-row{grid-template-columns:1fr 76px}.route-time{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero hero-v6" id="overview">
+<div class="hero-kicker">WA / 2026</div>
+<div class="hero-copy"><h1>Western Australia</h1><p>珀斯 · Esperance · Albany · Denmark · Margaret River · Rottnest</p></div>
+<div class="hero-count"><span>距离出发还有</span><strong id="clock">--天 --小时 --分 --秒</strong></div>
+</header>
+<nav class="tabs"><a href="#flights">航班</a><a href="#overview-map">总览</a><a href="#days-section">行程</a><a href="#drive">自驾</a><a href="#guide">Tips</a><a href="#todos">Todo</a></nav>
+<main class="wrap">
+<div class="section-eyebrow">OVERVIEW</div><h2 id="overview-map">行程总览</h2>
+<section class="overview-card">
+
+<div class="overview-head"><div><h3>西澳 · 南线自驾</h3><p>Perth → Esperance → Albany → Denmark → Cowaramup → Busselton → Fremantle → Rottnest</p></div><div class="route-stat">约 2,000+ km<br/><span>9晚 · 10天西澳段</span></div></div>
+<div class="wa-map-shell">
+<svg aria-label="Western Australia south coast road trip map" role="img" viewbox="0 0 760 540">
+<defs>
+<lineargradient id="sand" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f4e2bd"></stop><stop offset="1" stop-color="#e6c992"></stop></lineargradient>
+<lineargradient id="sea" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#bfe9ec"></stop><stop offset="1" stop-color="#8ed4d8"></stop></lineargradient>
+<filter id="soft"><fedropshadow dx="0" dy="5" flood-opacity=".12" stddeviation="8"></fedropshadow></filter>
+</defs>
+<rect fill="url(#sea)" height="540" rx="26" width="760"></rect>
+<!-- stylised WA silhouette -->
+<path d="M184 38 L618 38 L627 94 L642 154 L632 213 L655 261 L640 331 L674 388 L658 468 L560 488 L479 505 L401 493 L321 503 L257 487 L219 452 L177 430 L142 377 L128 308 L141 250 L127 187 L145 118 Z" fill="url(#sand)" filter="url(#soft)" stroke="#bd9460" stroke-width="3"></path>
+<!-- terrain contours -->
+<g fill="none" opacity=".45" stroke="#c9a871" stroke-width="1.5">
+<path d="M205 91 C304 64 445 77 566 96"></path><path d="M179 128 C314 101 466 118 601 142"></path><path d="M163 177 C309 151 494 164 615 195"></path><path d="M167 230 C318 210 487 216 619 246"></path><path d="M174 283 C316 267 489 274 628 301"></path><path d="M186 336 C330 320 492 334 633 357"></path><path d="M205 389 C339 370 506 386 638 408"></path>
+</g>
+<path d="M228 162 C289 184 339 220 392 270 C442 318 513 376 606 424" fill="none" opacity=".55" stroke="#a87f48" stroke-width="2.2"></path>
+<text fill="#9a7448" font-size="31" font-weight="750" opacity=".78" x="338" y="198">WESTERN</text>
+<text fill="#9a7448" font-size="31" font-weight="750" opacity=".78" x="329" y="230">AUSTRALIA</text>
+<!-- south-route -->
+<path d="M221 357 C355 359 493 409 604 456 C516 492 431 500 366 492 C323 486 286 472 251 453 C228 440 213 419 208 397" fill="none" stroke="#9f493d" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></path>
+<path d="M208 397 C189 385 171 371 154 357" fill="none" stroke="#283b52" stroke-dasharray="7 7" stroke-width="4"></path>
+<g fill="#26384a" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif" font-size="14" font-weight="700">
+<g><circle cx="221" cy="357" fill="#0f9a8a" r="10"></circle><text x="236" y="353">Perth</text></g>
+<g><circle cx="604" cy="456" fill="#9f493d" r="10"></circle><text x="617" y="460">Esperance</text></g>
+<g><circle cx="470" cy="492" fill="#9f493d" r="10"></circle><text x="482" y="516">Albany</text></g>
+<g><circle cx="409" cy="495" fill="#9f493d" r="10"></circle><text x="370" y="522">Denmark</text></g>
+<g><circle cx="342" cy="486" fill="#9f493d" r="10"></circle><text x="282" y="469">Margaret River</text></g>
+<g><circle cx="279" cy="455" fill="#0f9a8a" r="10"></circle><text x="293" y="452">Busselton</text></g>
+<g><circle cx="208" cy="397" fill="#0f9a8a" r="10"></circle><text x="219" y="418">Fremantle</text></g>
+<g><circle cx="154" cy="357" fill="#283b52" r="10"></circle><text x="89" y="340">Rottnest</text></g>
+</g>
+<g fill="#7d6546" font-size="12"><text x="545" y="435">1 · Esperance</text><text x="425" y="474">2 · Albany</text><text x="318" y="455">3 · South West</text><text x="167" y="380">4 · Fremantle</text></g>
+<g transform="translate(640 68)"><circle cx="0" cy="0" fill="#fff" opacity=".85" r="27"></circle><path d="M0 -18 L5 0 L0 18 L-5 0Z" fill="#26384a"></path><text fill="#26384a" font-size="11" font-weight="800" x="-5" y="-30">N</text></g>
+</svg>
+</div>
+<div class="route-footer"><span>🚗 南线主驾：Perth → Esperance → Albany → Denmark → Margaret River → Busselton → Fremantle</span><span>⛴ Rottnest 单独往返</span></div>
+</section>
+<h2 id="flights">✈️ 航班（已出票）</h2>
+<div class="grid2">
+<section class="card"><div class="small muted">9/29 · TR181</div><div class="flight"><div><div class="airport">NKG</div><b>17:05</b></div><div class="mid">→</div><div style="text-align:right"><div class="airport">SIN</div><b>22:20</b></div></div></section>
+<section class="card"><div class="small muted">9/30 · TR16</div><div class="flight"><div><div class="airport">SIN</div><b>03:00</b></div><div class="mid">→</div><div style="text-align:right"><div class="airport">PER</div><b>08:10</b></div></div></section>
+<section class="card"><div class="small muted">10/8 · TR9</div><div class="flight"><div><div class="airport">PER</div><b>18:25</b></div><div class="mid">→</div><div style="text-align:right"><div class="airport">SIN</div><b>23:45</b></div></div></section>
+<section class="card"><div class="small muted">10/9 · TR180</div><div class="flight"><div><div class="airport">SIN</div><b>10:30</b></div><div class="mid">→</div><div style="text-align:right"><div class="airport">NKG</div><b>15:50</b></div></div></section>
+</div>
+<section class="drive-section" id="drive">
+<div class="section-eyebrow">ON THE ROAD</div>
+<h2>自驾信息</h2>
+<div class="drive-hero">
+<div><span class="drive-small">NO BIRDS · KEWDALE</span><h3>Haval Jolion / Tiggo 4 / MG ZS<br/><small>或同级 SUV</small></h3><p>2人 · 自动挡 · Unlimited km</p></div>
+<div class="drive-pill">A$498<br/><small>订单现价</small></div>
+<div class="drive-row"><span>取车</span><b>09.30 · 10:00<br/>172 Kewdale Rd</b></div>
+<div class="drive-row"><span>计划还车</span><b>10.06 · 傍晚<br/>需先修改订单</b></div>
+</div>
+<div class="drive-tabs">
+<article><h4>取车检查</h4><ul><li>360° 录视频：划痕、轮胎、玻璃、油量、内饰</li><li>核对保险 / excess 与第二驾驶人</li><li>确认 Esperance remote travel fee 是否已包含订单</li><li>确认备胎、千斤顶、道路救援电话</li></ul></article>
+<article><h4>驾驶提醒</h4><ul><li>9/30 红眼航班后长途驾驶：两人轮换，每 1.5–2h 休息</li><li>黄昏后减少乡间驾驶，重点防袋鼠等野生动物</li><li>Denmark / Walpole 山林路段弯道更多，不赶时间超车</li><li>油量低于半箱时，长途段看到合适加油站就补</li></ul></article>
+<article><h4>还车策略</h4><ul><li>10/6：Busselton → Fremantle 放行李 → Kewdale 还车</li><li>工作日门店目前 19:30 关闭</li><li>还车前加油、拍最终车况与油表</li><li>改成功前，原 10/7 还车安排仍视为有效</li></ul></article>
+</div>
+<div class="drive-note">⚠️ No Birds 官网当前把 Esperance 列为 remote travel destination，并提示一次性 A$150 费用；出发前请核对你的现有订单是否已经包含，避免柜台临时加收。</div>
+</section><div class="section-eyebrow">DAY BY DAY</div><h2 id="days-section">每日行程</h2>
+<p class="muted small">行程默认折叠。时间轴里把“玩、吃、休息、驾驶”放在一起；景点配图全部改成网上可查的真实实景照片，不再使用效果图截图。</p><p class="weather-note" style="margin:8px 2px 16px">☀️ 天气卡目前按西澳春季长期气候值制作；临近出发进入可靠预报窗口后，建议再按实际逐日预报更新。</p>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 01 · 9.29</div><div class="summary-route">杭州 → 南京 → 新加坡</div><div class="summary-meta">周二 · 国际航班日</div></div><div class="summary-side"><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌤️</div><div><div class="weather-temp">南京约 20–27°C · 新加坡约 26–31°C</div><div class="weather-desc">跨城飞行，南京初秋偏暖；新加坡炎热潮湿</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">短袖/薄衬衫 + 轻薄长裤；飞机上加薄针织或轻外套。建议奶油白、灰蓝等低饱和配色，兼顾机场拍照。</div></div></div><div class="timeline">
+<div class="event"><div class="time">早餐</div><div class="body"><div class="meal"><b>杭州正常吃早餐</b></div></div></div>
+<div class="event"><div class="time">上午</div><div class="body"><b>杭州 → 南京南</b><div class="desc">高铁待开售，选择宁早不晚的车次。</div></div></div>
+<div class="event"><div class="time">午餐</div><div class="body"><div class="meal"><b>南京南 / 禄口机场正常吃午餐</b></div></div></div>
+<div class="event"><div class="time">17:05</div><div class="body"><b>TR181 南京 → 新加坡</b></div></div>
+<div class="event"><div class="time">22:20</div><div class="body"><b>抵达 Changi T1</b><div class="desc">转机期间吃夜宵，为 03:00 航班补体力。</div></div></div>
+</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 02 · 9.30</div><div class="summary-route">Perth → Esperance</div><div class="summary-meta">周三 · 全程最累的一天，只做移动</div></div><div class="summary-side"><span class="badge risk">不去 Wave Rock</span><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌤️</div><div><div class="weather-temp">Perth 约 10–23°C · Esperance 约 11–19°C</div><div class="weather-desc">长途移动；越往南海风越凉</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">T恤 + 牛仔裤/休闲长裤 + 防风外套；车里分层穿。抵达 Esperance 后不要只穿薄上衣。</div></div></div>
+<div class="dayroute"><span>🚗 Perth Airport → No Birds Kewdale → Esperance</span><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Perth+Airport+T1+WA&amp;destination=Esperance+WA&amp;waypoints=172+Kewdale+Road+Kewdale+WA" target="_blank">Google 导航 ↗</a></div><div class="route-grid"><div class="route-grid-head"><b>🧭 今日驾驶分段</b><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Perth+Airport+T1+WA&amp;destination=Esperance+WA&amp;waypoints=172+Kewdale+Road+Kewdale+WA" target="_blank">打开完整路线 ↗</a></div><div class="route-row"><div class="route-leg">Perth Airport T1 → No Birds Kewdale<span>取车</span></div><div class="route-time">约 15 km<br>20 min</div></div><div class="route-row"><div class="route-leg">No Birds Kewdale → Esperance<span>South Coast Highway；中途午餐 + 轮换驾驶</span></div><div class="route-time">约 700 km<br>7 h 45 min</div></div><div class="route-total">预计纯驾驶约 8 h 05 min；加早餐、取车、午餐和休息，全天按 11–12 h 预留。</div></div><div class="timeline">
+<div class="event"><div class="time">08:10</div><div class="body"><b>抵达 Perth</b><div class="desc">入境、取行李后先吃一顿完整早餐。</div></div></div>
+<div class="event"><div class="time">10:00</div><div class="body"><b>No Birds Kewdale 取车</b></div></div>
+<div class="event"><div class="time">13:00</div><div class="body"><div class="meal"><b>途中午餐 45–60 分钟</b><br/><span class="muted">不允许“车上随便吃两口”代替午餐。</span></div></div></div>
+<div class="event"><div class="time">下午</div><div class="body"><b>继续 Esperance</b><div class="desc">两人轮换，每 1.5–2 小时下车休息。</div></div></div>
+<div class="event"><div class="time">晚上</div><div class="body"><div class="meal"><b>Esperance 就近晚餐 + 早睡</b></div></div></div>
+</div>
+<div class="hotel">🏨 Hospitality Esperance · 9/30–10/3</div>
+</div></details>
+<details class="card day" open="">
+<summary><div class="summary-main"><div class="daylabel">DAY 03 · 10.1</div><div class="summary-route">Cape Le Grand</div><div class="summary-meta">周四 · Hellfire · Thistle Cove · Lucky Bay</div></div><div class="summary-side"><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌬️</div><div><div class="weather-temp">Esperance / Cape Le Grand 约 11–22°C</div><div class="weather-desc">晴间多云概率较高，但海边风大、体感更低</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">白/浅蓝上衣 + 卡其或牛仔下装 + 防风外套；运动鞋。Lucky Bay 很适合浅色系，带墨镜和帽子，外套选能抗风的。</div></div></div>
+<div class="dayroute"><span>🚗 Esperance → Hellfire Bay → Thistle Cove → Lucky Bay → Esperance</span><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Esperance+WA&amp;destination=Esperance+WA&amp;waypoints=Hellfire+Bay+WA%7CThistle+Cove+WA%7CLucky+Bay+WA" target="_blank">Google 导航 ↗</a></div><div class="timeline">
+<div class="event"><div class="time">08:00</div><div class="body"><div class="meal"><b>早餐 + 打包野餐</b></div></div></div>
+<div class="event"><div class="time">09:30</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Hellfire%20Bay%20WA" target="_blank">Hellfire Bay</a></b><div class="desc">比 Lucky Bay 更紧凑、有包裹感；这里看的是花岗岩、白沙和清透海水的组合。</div><figure class="spot-photo"><img alt="Hellfire Bay 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hellfire%20Bay%2C%20Cape%20Le%20Grand%20National%20Park%2C%20January%202025%2001.jpg?width=1200"/>
+<figcaption>DaHuzyBru · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Hellfire_Bay,_Cape_Le_Grand_National_Park,_January_2025_01.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">11:00</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Thistle%20Cove%20WA" target="_blank">Thistle Cove / Whistling Rock</a></b><div class="desc">看风化巨石和海湾地貌，不是简单重复一片海。</div><figure class="spot-photo"><img alt="Thistle Cove 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Cape%20Le%20Grande%20National%20Park%2C%20Thistle%20Cove.jpg?width=1200"/>
+<figcaption>Emilyjade · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Cape_Le_Grande_National_Park,_Thistle_Cove.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">12:30</div><div class="body"><div class="meal"><b>国家公园野餐午餐 · 45–60 分钟</b></div></div></div>
+<div class="event"><div class="time">13:45</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Lucky%20Bay%20WA" target="_blank">Lucky Bay</a></b><span class="badge fit">核心</span><div class="desc">最值得慢下来的地方：极白沙滩、浅蓝海水和袋鼠机会；留约 2 小时，不做十分钟打卡。</div><figure class="spot-photo"><img alt="Lucky Bay 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/White%20beach%20Lucky%20Bay%20in%20Esperance.jpg?width=1200"/>
+<figcaption>Stan Feldman · Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/File:White_beach_Lucky_Bay_in_Esperance.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">16:00</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Frenchman%20Peak%20WA" target="_blank">Frenchman Peak（可选）</a></b><div class="desc">只有天气干燥、风不大、体力足才爬。海湾玩得开心就取消，不把旅行变任务。</div><figure class="spot-photo"><img alt="Frenchman Peak 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Frenchman%20Peak%2C%20Cape%20Le%20Grand%20National%20Park%2C%20January%202025%2005.jpg?width=1200"/>
+<figcaption>DaHuzyBru · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Frenchman_Peak,_Cape_Le_Grand_National_Park,_January_2025_05.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">19:00</div><div class="body"><div class="meal"><b>晚餐建议：Fish Face</b><br/><span class="muted">回城后吃当地海鲜，比再加景点更合适；周四晚营业，建议早点去。</span></div></div></div>
+</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 04 · 10.2</div><div class="summary-route">Esperance Great Ocean Drive</div><div class="summary-meta">周五 · 摄影 + 恢复体力日</div></div><div class="summary-side"><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌤️</div><div><div class="weather-temp">Esperance 约 12–22°C</div><div class="weather-desc">春季温和；海岸观景点仍可能强风</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">针织/长袖打底 + 牛仔裤，外搭短款风衣或夹克。拍海岸建议米白 + 丹宁蓝，既显色又不抢海景。</div></div></div><div class="dayroute"><span>🚗 Esperance → West Beach → Blue Haven → Twilight Beach → Observatory Point → Esperance</span><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Esperance+WA&amp;destination=Esperance+WA&amp;waypoints=West+Beach+Esperance%7CBlue+Haven+Beach+Esperance%7CTwilight+Beach+Esperance%7CObservatory+Point+Esperance" target="_blank">Google 导航 ↗</a></div><div class="route-grid"><div class="route-grid-head"><b>🧭 今日驾驶分段</b><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Esperance+WA&amp;destination=Esperance+WA&amp;waypoints=West+Beach+Esperance%7CBlue+Haven+Beach+Esperance%7CTwilight+Beach+Esperance%7CObservatory+Point+Esperance" target="_blank">打开完整路线 ↗</a></div><div class="route-row"><div class="route-leg">Esperance → West Beach</div><div class="route-time">约 7 km<br>12 min</div></div><div class="route-row"><div class="route-leg">West Beach → Blue Haven</div><div class="route-time">约 6 km<br>10 min</div></div><div class="route-row"><div class="route-leg">Blue Haven → Twilight Beach</div><div class="route-time">约 6 km<br>10 min</div></div><div class="route-row"><div class="route-leg">Twilight Beach → Observatory Point</div><div class="route-time">约 6 km<br>10 min</div></div><div class="route-row"><div class="route-leg">Observatory Point → Esperance</div><div class="route-time">约 6 km<br>10 min</div></div><div class="route-total">预计纯驾驶约 52 min；景点之间短距离，适合慢拍和恢复体力。</div></div><div class="timeline">
+<div class="event"><div class="time">09:00</div><div class="body"><div class="meal"><b>早餐推荐：Cloud Eleven</b><br/><span class="muted">咖啡和日式风格 brunch，今天不用早起。</span></div></div></div>
+<div class="event"><div class="time">10:30</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=West%20Beach%20Esperance" target="_blank">West Beach</a></b><div class="desc">海岸更高、浪感更强，是和 Lucky Bay 完全不同的南大洋气质。</div><figure class="spot-photo"><img alt="West Beach Esperance 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/West%20Beach%20WA.JPG?width=1200"/>
+<figcaption>Cookaa · Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/File:West_Beach_WA.JPG" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">11:45</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Blue%20Haven%20Beach%20Esperance" target="_blank">Blue Haven Beach</a></b><div class="desc">海色清透、湾形柔和，适合慢拍。</div><figure class="spot-photo"><img alt="Blue Haven Beach 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20Haven%20beach%2C%20Esperance.jpg?width=1200"/>
+<figcaption>Edrabikau · Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/File:Blue_Haven_beach,_Esperance.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">13:00</div><div class="body"><div class="meal"><b>市区午餐 · 60 分钟</b></div></div></div>
+<div class="event"><div class="time">14:30</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Twilight%20Beach%20Esperance" target="_blank">Twilight Beach</a></b><div class="desc">Esperance 城边最代表性的沙滩之一，巨石和沙滩构图很适合拍照。</div><figure class="spot-photo"><img alt="Twilight Beach 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Twilight%20Beach%2C%20bay%20and%20rocks%2C%20Esperance%2C%20January%202024%2003.jpg?width=1200"/>
+<figcaption>Calistemon · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Twilight_Beach,_bay_and_rocks,_Esperance,_January_2024_03.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">16:00</div><div class="body"><b>Observatory Point / Ten Mile Lagoon</b><div class="desc">看体力挑一处即可，不追求环线每站都停。</div></div></div>
+<div class="event"><div class="time">17:30</div><div class="body"><div class="food-pick"><b>攻略里的 Lucky Bay Brewing 很适合今天</b><br/>比 10/1 国家公园日更顺：下午海岸线结束后去喝当地啤酒、吃木炉 pizza，节奏松。</div></div></div>
+<div class="event"><div class="time">晚上</div><div class="body"><div class="meal"><b>若在 Brewery 已吃饱，就不再另排正式晚餐</b></div></div></div>
+</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 05 · 10.3</div><div class="summary-route">Esperance → Albany</div><div class="summary-meta">周六 · 移动日 + 风车山</div></div><div class="summary-side"><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌦️</div><div><div class="weather-temp">Esperance → Albany 约 11–21°C</div><div class="weather-desc">跨南岸移动；Albany 更湿、更容易阵雨</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">长袖T/薄针织 + 长裤 + 防水防风外套；鞋子选耐走、遇小雨不怕湿的。风车山不要穿太飘的长裙。</div></div></div><div class="dayroute"><span>🚗 Hospitality Esperance → Albany Wind Farm → Hilton Garden Inn Albany</span><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Hospitality+Esperance+WA&amp;destination=Hilton+Garden+Inn+Albany+WA&amp;waypoints=Albany+Wind+Farm+WA" target="_blank">Google 导航 ↗</a></div><div class="route-grid"><div class="route-grid-head"><b>🧭 今日驾驶分段</b><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Hospitality+Esperance+WA&amp;destination=Hilton+Garden+Inn+Albany+WA&amp;waypoints=Albany+Wind+Farm+WA" target="_blank">打开完整路线 ↗</a></div><div class="route-row"><div class="route-leg">Hospitality Esperance → Albany Wind Farm<span>South Coast Highway</span></div><div class="route-time">约 480 km<br>5 h 05–20 min</div></div><div class="route-row"><div class="route-leg">Albany Wind Farm → Hilton Garden Inn Albany<span>进入 Albany Waterfront</span></div><div class="route-time">约 20 km<br>15–20 min</div></div><div class="route-total">预计纯驾驶约 5 h 25–40 min；10/3 建议 09:00 左右出发，中途午餐和轮换驾驶。</div></div><div class="timeline">
+<div class="event"><div class="time">08:00</div><div class="body"><div class="meal"><b>早餐后退房</b></div></div></div>
+<div class="event"><div class="time">09:00</div><div class="body"><b>出发 Albany</b></div></div>
+<div class="event"><div class="time">12:00</div><div class="body"><div class="meal"><b>途中午餐 + 驾驶员轮换</b></div></div></div>
+<div class="event"><div class="time">15:30</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Albany%20Wind%20Farm" target="_blank">Albany Wind Farm</a></b><div class="desc">风机 + 高地 + 南大洋海岸，是从 Esperance 白沙景观切换到 Albany 粗粝海岸的好过渡。</div><figure class="spot-photo"><img alt="Albany Wind Farm 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Albany%20wind%20farm.jpg?width=1200"/>
+<figcaption>Amanprashar123 · Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/File:Albany_wind_farm.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">18:30</div><div class="body"><div class="meal"><b>晚餐优先：Ocean &amp; Paddock</b><br/><span class="muted">长途驾驶日更适合轻松的当地 Fish &amp; Chips；若已经很累就直接外带。Sotao 留作想吃正式晚餐时的备选。</span></div></div></div>
+</div><div class="hotel">🏨 Hilton Garden Inn Albany · 10/3–10/5</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 06 · 10.4</div><div class="summary-route">Torndirrup + Whaling Station</div><div class="summary-meta">周日 · 悬崖地貌 + 历史</div></div><div class="summary-side"><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌬️</div><div><div class="weather-temp">Albany 约 11–20°C</div><div class="weather-desc">南大洋悬崖风感明显，阵雨可能性存在</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">薄针织/卫衣 + 长裤 + 防风防水壳；The Gap 建议裤装和抓地运动鞋。想拍照可用深蓝/灰色外套配白色内搭。</div></div></div><div class="area-intro"><b>Albany 看什么？</b> 南大洋悬崖、花岗岩奇观、捕鲸历史和港口小城。The Gap 是力量感，Whaling Station 是内容型体验；Point King、海马壁画属于有时间再加的城市彩蛋。</div><div class="dayroute"><span>🚗 Hilton Garden Inn Albany → The Gap → Natural Bridge → Historic Whaling Station → Hilton Garden Inn</span><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Hilton+Garden+Inn+Albany+WA&amp;destination=Hilton+Garden+Inn+Albany+WA&amp;waypoints=The+Gap+Albany+WA%7CNatural+Bridge+Albany+WA%7CAlbany%27s+Historic+Whaling+Station+WA" target="_blank">Google 导航 ↗</a></div><div class="route-grid"><div class="route-grid-head"><b>🧭 今日驾驶分段</b><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Hilton+Garden+Inn+Albany+WA&amp;destination=Hilton+Garden+Inn+Albany+WA&amp;waypoints=The+Gap+Albany+WA%7CNatural+Bridge+Albany+WA%7CAlbany%27s+Historic+Whaling+Station+WA" target="_blank">打开完整路线 ↗</a></div><div class="route-row"><div class="route-leg">Hilton Garden Inn → The Gap</div><div class="route-time">约 9 km<br>19 min</div></div><div class="route-row"><div class="route-leg">The Gap → Natural Bridge</div><div class="route-time">约 1 km<br>3 min</div></div><div class="route-row"><div class="route-leg">Natural Bridge → Historic Whaling Station</div><div class="route-time">约 8 km<br>10–12 min</div></div><div class="route-row"><div class="route-leg">Historic Whaling Station → Hilton Garden Inn</div><div class="route-time">约 9 km<br>22 min</div></div><div class="route-total">预计纯驾驶约 55 min；The Gap / Natural Bridge 和 Whaling Station 是今天的核心。</div></div><div class="timeline">
+<div class="event"><div class="time">08:00</div><div class="body"><div class="meal"><b>早餐</b><br/><span class="muted">想吃好一点可找 Albany 市区 bakery / café，上午不赶。</span></div></div></div>
+<div class="event"><div class="time">09:30</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Gap%20Albany%20WA" target="_blank">The Gap</a></b><div class="desc">站在平台上直接感受南大洋冲击悬崖的尺度，是 Albany 最有“力量感”的一站。</div><figure class="spot-photo"><img alt="The Gap 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Gap%2C%20Torndirrup%20National%20Park%2C%20Albany%2C%20Western%20Australia.jpg?width=1200"/>
+<figcaption>Leon Durrant · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:The_Gap,_Torndirrup_National_Park,_Albany,_Western_Australia.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">10:30</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Natural%20Bridge%20Albany%20WA" target="_blank">Natural Bridge</a></b><div class="desc">天然花岗岩拱桥，与 The Gap 同区域，顺路看，不需单独折腾。</div><figure class="spot-photo"><img alt="Natural Bridge 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Natural%20Bridge%2C%20Torndirrup%20National%20Park%2C%20Western%20Australia.jpg?width=1200"/>
+<figcaption>Kwokka3 · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Natural_Bridge,_Torndirrup_National_Park,_Western_Australia.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">12:00</div><div class="body"><div class="meal"><b>午餐 · 60 分钟</b></div></div></div>
+<div class="event"><div class="time">13:30</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Albany%20Historic%20Whaling%20Station" target="_blank">Historic Whaling Station</a></b><div class="desc">现场二选一：天气好、想多看海岸就以外部海湾/船只为主；阴雨或对历史有兴趣则完整进馆。当前公开营业时间通常为 09:00–17:00。</div><figure class="spot-photo"><img alt="Albany Historic Whaling Station 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Humpback%20whale%20skeleton%2C%20AHWS%2C%202018%20%2801%29.jpg?width=1200"/>
+<figcaption>Calistemon · Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/File:Humpback_whale_skeleton,_AHWS,_2018_(01).jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">16:30</div><div class="body"><b>顺路彩蛋：Point King / 海马壁画 / 回酒店休息</b><div class="desc">只在前面提前结束且体力足时选一个；不为冷门点牺牲休息。The Gap 若当天夕阳条件特别好，也可把它调到下午较晚。</div></div></div>
+<div class="event"><div class="time">19:00</div><div class="body"><div class="meal"><b>Albany 晚餐</b></div></div></div>
+</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 07 · 10.5</div><div class="summary-route">Albany → Denmark → Margaret River</div><div class="summary-meta">周一 · 薄荷海湾 + 巨树森林 + 镇中心住宿</div></div><div class="summary-side"><span class="badge ok">住宿已订</span><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌦️</div><div><div class="weather-temp">Albany / Denmark / Metricup 约 10–20°C</div><div class="weather-desc">森林和海湾温差明显，早晚偏凉</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">分层最重要：长袖打底 + 针织/薄抓绒 + 防雨外套，下装长裤。Greens Pool 可用浅色系；巨树森林更适合棕、卡其、墨绿。</div></div></div>
+<div class="dayroute"><span>🚗 Hilton Garden Inn Albany → Greens Pool → Elephant Rocks → Denmark → Valley of the Giants → Margarets In Town</span><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Hilton+Garden+Inn+Albany+WA&amp;destination=Margarets+In+Town+Apartments+Margaret+River+WA&amp;waypoints=Greens+Pool+WA%7CElephant+Rocks+WA%7CDenmark+WA%7CValley+of+the+Giants+Tree+Top+Walk+WA" target="_blank">Plan A · 含 Valley ↗</a><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Hilton+Garden+Inn+Albany+WA&amp;destination=Margarets+In+Town+Apartments+Margaret+River+WA&amp;waypoints=Greens+Pool+WA%7CDenmark+WA" target="_blank">Plan B · 跳过 Valley ↗</a></div><div class="route-grid"><div class="route-grid-head"><b>🧭 今日驾驶分段 · Plan A / Plan B</b><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Hilton+Garden+Inn+Albany+WA&amp;destination=Margarets+In+Town+Apartments+Margaret+River+WA&amp;waypoints=Greens+Pool+WA%7CElephant+Rocks+WA%7CDenmark+WA%7CValley+of+the+Giants+Tree+Top+Walk+WA" target="_blank">Plan A 完整路线 ↗</a></div><div class="route-row"><div class="route-leg">Hilton Garden Inn Albany → Greens Pool<span>William Bay National Park</span></div><div class="route-time">约 70 km<br>1 h 05–15 min</div></div><div class="route-row"><div class="route-leg">Greens Pool → Elephant Rocks<span>同一园区内短距离移动</span></div><div class="route-time">约 1.5 km<br>5 min</div></div><div class="route-row"><div class="route-leg">Elephant Rocks → Denmark<span>回到 Denmark 镇区午餐</span></div><div class="route-time">约 15 km<br>20 min</div></div><div class="route-row"><div class="route-leg">Denmark → Valley of the Giants<span>Plan A；约 49–54 km</span></div><div class="route-time">约 50 km<br>40–41 min</div></div><div class="route-row"><div class="route-leg">Valley of the Giants → Margarets In Town<span>Plan A；长途返回 Margaret River</span></div><div class="route-time">约 267 km<br>3 h 10–20 min</div></div><div class="route-row"><div class="route-leg">Denmark → Margarets In Town<span>Plan B；跳过 Valley 时</span></div><div class="route-time">约 190 km<br>2 h 20–40 min</div></div><div class="route-total">Plan A 纯驾驶约 5 h 30–45 min；Plan B 约 4 h。若 12:35 前已明显延误或疲劳，直接执行 Plan B。</div></div><div class="area-intro"><b>Denmark &amp; Southern Forests 看什么？</b> 这里是“海 → 森林”的过渡区：Greens Pool / Elephant Rocks 是平静薄荷海，Valley of the Giants / Ancient Empire 是巨型 Tingle 森林。今天不追巨树攀爬点，Dave Evans / Gloucester Tree 只留作知识卡。</div>
+
+<div class="note small"><b>这天是全程最需要现场取舍的一天。</b> Denmark 到 Valley of the Giants 约 49–52 km、约 40–50 分钟；森林游览后还要继续长距离向 Margaret River 镇区。若上午延误、天气差或你坚持天黑前到 Margaret River，<b>直接跳过 Valley</b>，不要夜驾。</div>
+<div class="timeline">
+<div class="event"><div class="time">07:30</div><div class="body"><div class="meal"><b>早餐 + 退房</b></div></div></div>
+<div class="event"><div class="time">08:30</div><div class="body"><b>Albany 出发</b><div class="desc">今天不要睡懒觉；Albany → Greens Pool 约 1 小时量级。</div></div></div>
+<div class="event"><div class="time">09:35</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Greens%20Pool%20Denmark%20WA" target="_blank">Greens Pool + Elephant Rocks</a></b><span class="badge fit">核心</span><div class="desc">两点步行串联，合计约 1.5 小时。2026 正在做步道/观景设施升级，公园保持开放但可能有局部封闭和替代路线。</div><figure class="spot-photo"><img alt="Greens Pool 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/GreenspoolWA.JPG?width=1200"/><figcaption>Hughesdarren · Wikimedia Commons · Public Domain</figcaption></figure></div></div>
+<div class="event"><div class="time">11:30</div><div class="body"><div class="meal"><b>Denmark 午餐：Mrs Jones 优先</b><br/><span class="muted">周一当前营业 07:00–14:30，适合快速吃完继续赶路。Pepper &amp; Salt 很有旅行感，但当前营业信息不含周一，因此不把它排进这天；Denmark Tavern 是可靠 Plan B。</span></div></div></div>
+<div class="event"><div class="time">12:35</div><div class="body"><b>决定是否进 Southern Forests</b><div class="options"><span class="choice">A 推荐：时间正常 → Valley</span><span class="choice">B 延误/疲劳 → 直接 Margaret River 镇区</span></div></div></div>
+<div class="event"><div class="time">13:25</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Valley%20of%20the%20Giants%20Tree%20Top%20Walk" target="_blank">Valley of the Giants + Ancient Empire</a></b><span class="badge fit">新增精华</span><div class="desc">Tree Top Walk 600m、最高约40m；Ancient Empire 免费。官方当前 09:00–17:00，Tree Top Walk 成人 A$21。预留约 1–1.5 小时，两个一起看才完整。</div></div></div>
+<div class="event"><div class="time">14:45</div><div class="body"><b>最晚离开森林，向 Margaret River 镇区</b><div class="desc">这是硬性控制点。之后不再加 Dave Evans、Gloucester Tree、洞穴或海岸支线；途中每 1.5–2 小时休息/换司机。</div></div></div>
+<div class="event"><div class="time">傍晚</div><div class="body"><b>Margarets In Town Apartments</b><div class="desc">若选择 Valley，抵达 Margaret River 镇区会偏晚；如果当天不想晚到，上午就执行 B 方案。Margarets In Town Apartments 位于 Margaret River 镇中心，晚餐可步行解决，避免乡间夜驾。</div></div></div>
+<div class="event"><div class="time">晚餐</div><div class="body"><div class="meal"><b>晚餐 / 提前采购</b><br/><span class="muted">不要到住宿后再临时找餐厅。</span></div></div></div>
+</div><div class="hotel">🏨 Margarets In Town Apartments · 6 Tunbridge St, Margaret River WA 6285 · 住宿已订</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 08 · 10.6</div><div class="summary-route">Busselton 观鲸 → Fremantle</div><div class="summary-meta">周二 · 季节限定主体验 + 晚上还车</div></div><div class="summary-side"><span class="badge todo">观鲸待订</span><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌬️</div><div><div class="weather-temp">Margaret River / Busselton 约 11–20°C</div><div class="weather-desc">观鲸船上海风会显著降低体感</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">重点穿暖：长袖 + 薄抓绒/针织 + 防风外套 + 长裤；建议带围巾。船上不要穿裙子或宽檐帽。到 Fremantle 后可脱掉中层。</div></div></div><div class="dayroute"><span>🚗 Margarets In Town → Port Geographe → Busselton Jetty → Garde Hotel → No Birds Kewdale</span><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Margarets+In+Town+Apartments+Margaret+River+WA&amp;destination=172+Kewdale+Road+Kewdale+WA&amp;waypoints=Port+Geographe+Marina+Busselton%7CBusselton+Jetty%7CGarde+Hotel+Fremantle" target="_blank">Google 导航 ↗</a></div><div class="route-grid"><div class="route-grid-head"><b>🧭 今日驾驶分段</b><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Margarets+In+Town+Apartments+Margaret+River+WA&amp;destination=172+Kewdale+Road+Kewdale+WA&amp;waypoints=Port+Geographe+Marina+Busselton%7CBusselton+Jetty%7CGarde+Hotel+Fremantle" target="_blank">打开完整路线 ↗</a></div><div class="route-row"><div class="route-leg">Margarets In Town → Port Geographe Marina<span>观鲸集合区域</span></div><div class="route-time">约 50 km<br>40–45 min</div></div><div class="route-row"><div class="route-leg">Port Geographe → Busselton Jetty<span>观鲸后午餐 / Jetty</span></div><div class="route-time">约 6 km<br>8–10 min</div></div><div class="route-row"><div class="route-leg">Busselton Jetty → Garde Hotel Fremantle<span>午餐后直接向 Perth 方向</span></div><div class="route-time">约 230 km<br>2 h 35–50 min</div></div><div class="route-row"><div class="route-leg">Garde Hotel → No Birds Kewdale<span>放行李后去还车</span></div><div class="route-time">约 30 km<br>30–35 min</div></div><div class="route-total">预计纯驾驶约 3 h 55–4 h 20 min；17:30 还车仍需预留 Perth 市区交通缓冲。</div></div><div class="area-intro"><b>Margaret River / Busselton 看什么？</b> 酒庄只是其中一部分：这里还有溶洞、印度洋岩石海岸、天然海池、鳐鱼、Geographe Bay 迁徙鲸群和超长栈桥。今天以“季节限定观鲸”为主，其他全部服从海况和还车时间。</div><div class="timeline">
+<div class="event"><div class="time">早餐</div><div class="body"><div class="meal"><b>Margarets In Town Apartments 早餐 / Margaret River 镇内咖啡店</b></div></div></div>
+<div class="event"><div class="time">上午</div><div class="body"><b>🐋 Geographe Bay 观鲸</b><div class="desc">10月季节限定，优先级最高，具体时间以出票为准。</div><div class="options"><b>若因海况取消：</b> 阴雨优先 Jewel Cave / Lake Cave；想自由控制时间选 Mammoth Cave；晴天且不赶还车可考虑 Hamelin Bay 看鳐鱼或 Injidup Natural Spa。不要全部去。</div></div></div>
+<div class="event"><div class="time">12:30</div><div class="body"><div class="meal"><b>午餐推荐：Shelter Brewing Co.</b><br/><span class="muted">就在 Busselton Jetty 旁，观鲸后吃饭 + 看 Jetty 一次完成，比专程找远处餐厅更合理。</span></div></div></div>
+<div class="event"><div class="time">13:45</div><div class="body"><b><a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Busselton%20Jetty" target="_blank">Busselton Jetty</a></b><div class="desc">不需要强行买小火车/海底观测站；时间够就散步拍照。</div><figure class="spot-photo"><img alt="Busselton Jetty 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Busselton%20Jetty.jpg?width=1200"/>
+<figcaption>BijuJosephPerth · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Busselton_Jetty.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">15:00</div><div class="body"><b>出发 Fremantle</b><div class="desc">若全程提前，可在 Mandurah Stingray Point 短停 20–30 分钟碰运气看野生海豚；绝不等待。Canal Rocks / Hamelin Bay / Injidup 不在正常主线硬塞。</div></div></div>
+<div class="event"><div class="time">17:00</div><div class="body"><b>Garde Hotel 放行李</b></div></div>
+<div class="event"><div class="time">17:30</div><div class="body"><b>No Birds Kewdale 提前还车</b><div class="desc">订单需先改成 10/6 晚；门店工作日 19:30 关闭。</div></div></div>
+<div class="event"><div class="time">20:00</div><div class="body"><div class="meal"><b>Fremantle 晚餐：Bread in Common 优先</b><br/><span class="muted">还车回来后在 Fremantle 吃，适合分享菜；若想简单海鲜则把 Kailis 留给今晚或 10/7。</span></div></div></div>
+</div><div class="hotel">🏨 Garde Hotel · 10/6–10/8</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 09 · 10.7</div><div class="summary-route">Rottnest Island</div><div class="summary-meta">周三 · Island Explorer + 海湾 + Quokka</div></div><div class="summary-side"><span class="badge ok">船票已出</span><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌤️</div><div><div class="weather-temp">Fremantle / Rottnest 约 12–22°C</div><div class="weather-desc">岛上日照强、海风明显，骑行/步行体感变化大</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">T恤 + 薄防风外套 + 轻便长裤/短裤视当天气温；运动鞋、墨镜、帽子。推荐白色 + 卡其/浅蓝，和 Rottnest 海水很搭。</div></div></div><div class="area-intro"><b>Rottnest 看什么？</b> 不只是 Quokka：精华是南岸薄荷蓝海湾、沉船/珊瑚海域、西端荒野海岸和 Quokka。一天不骑22km环岛，Island Explorer 负责长距离移动。</div><div class="note small"><b>先订 Island Explorer。</b> 官方明确提示高峰期经常售罄，建议提前网上订；当前服务有 19 个站点。</div><div class="timeline">
+<div class="event"><div class="time">07:30</div><div class="body"><div class="meal"><b>Fremantle 早餐</b></div></div></div>
+<div class="event"><div class="time">08:45</div><div class="body"><b>B Shed 抵达</b></div></div>
+<div class="event"><div class="time">09:30</div><div class="body"><b>Rottnest Express 开船</b></div></div>
+<div class="event"><div class="time">上午</div><div class="body"><b>Island Explorer · Henrietta Rocks → Parker Point → 第三站机动</b><div class="desc">前两站作为海湾核心；第三站从 Salmon Bay / Little Salmon Bay / West End 中按当天风向和巴士班次选一个。若巴士售罄，优先 E-bike；普通自行车不做22km环岛。</div><figure class="spot-photo"><img alt="Rottnest Island Catherine Bay 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Catherine%20Bay%20and%20beach%2C%20Rottnest%20Island%2C%20April%202026%2001.jpg?width=1200"/>
+<figcaption>Calistemon · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Catherine_Bay_and_beach,_Rottnest_Island,_April_2026_01.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">12:30</div><div class="body"><div class="meal"><b>Thomson Bay 午餐</b><br/><span class="muted">不需要离开 Settlement 再找饭。</span></div></div></div>
+<div class="event"><div class="time">14:00</div><div class="body"><b>Quokka 时间</b><div class="desc">下午回 Settlement / Thomson Bay 慢慢找。蹲低拍照，不摸、不喂、不摘植物引诱；17:30船已出票，不为了“等游客散去”错过返航。</div><figure class="spot-photo"><img alt="Rottnest Island Quokka 实景" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Quokka%20with%20joey%20on%20Rottnest%20Island%2C%20April%202026%2004.jpg?width=1200"/>
+<figcaption>Calistemon · Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Quokka_with_joey_on_Rottnest_Island,_April_2026_04.jpg" target="_blank">原图/授权</a></figcaption></figure></div></div>
+<div class="event"><div class="time">15:30</div><div class="body"><div class="food-pick"><b>你收藏的 Simmo’s：这天反而比绕去 Dunsborough 更合适</b><br/>Simmo’s Rottnest 是季节性门店；若当天营业，直接在岛上吃。这样不用 10/6 为冰淇淋特意绕路。</div></div></div>
+<div class="event"><div class="time">17:30</div><div class="body"><b>返航 Fremantle</b></div></div>
+<div class="event"><div class="time">19:00</div><div class="body"><div class="meal"><b>晚餐：Kailis Fishmarket Cafe</b><br/><span class="muted">和 B Shed / Fishing Boat Harbour 动线很自然，适合把你攻略里的 Fremantle Fish &amp; Chips 安排在这里。</span></div></div></div>
+</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 10 · 10.8</div><div class="summary-route">Fremantle → Singapore</div><div class="summary-meta">周四 · 上午留白，不为吃饭跑 Perth CBD</div></div><div class="summary-side"><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌤️</div><div><div class="weather-temp">Fremantle 约 12–23°C · Singapore 约 26–31°C</div><div class="weather-desc">一天跨越凉爽春季和热带湿热</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">采用可脱式穿法：短袖打底 + 长裤 + 轻外套；登机前保留外套，到新加坡直接脱掉。不要穿厚毛衣。</div></div></div> <div class="dayroute"><span>🚕 Fremantle → Perth Airport</span><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Garde+Hotel+Fremantle&amp;destination=Perth+Airport+Terminal+1" target="_blank">前往机场 ↗</a></div><div class="timeline">
+<div class="event"><div class="time">08:30</div><div class="body"><div class="meal"><b>Fremantle 早餐 / 咖啡</b><br/><span class="muted">可选 Gino’s 一类 Cappuccino Strip 老牌 café；无需为了 Hifumiya / Northbridge 专门进 Perth。</span></div></div></div>
+<div class="event"><div class="time">10:00</div><div class="body"><b>退房 + 老城散步</b></div></div>
+<div class="event"><div class="time">12:30</div><div class="body"><div class="meal"><b>Fremantle 午餐</b><br/><span class="muted">有兴趣可去 Little Creatures 喝一杯 / 简单吃；否则就近解决。</span></div></div></div>
+<div class="event"><div class="time">14:30</div><div class="body"><b>前往 Perth Airport T1</b></div></div>
+<div class="event"><div class="time">18:25</div><div class="body"><b>TR9 → Singapore</b></div></div>
+</div></div></details>
+<details class="card day">
+<summary><div class="summary-main"><div class="daylabel">DAY 11 · 10.9</div><div class="summary-route">Singapore → 南京 → 杭州</div><div class="summary-meta">周五 · 旅程终点仍是杭州</div></div><div class="summary-side"><span class="chev">⌄</span></div></summary>
+<div class="daybody">
+<div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌦️</div><div><div class="weather-temp">Singapore 约 26–31°C · 南京/杭州约 18–25°C</div><div class="weather-desc">新加坡闷热有阵雨；回国后转为初秋体感</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">新加坡短袖即可，随身带折叠伞；飞机上加薄外套。落地南京后薄长袖/轻外套基本够用。</div></div></div><div class="timeline">
+<div class="event"><div class="time">早餐</div><div class="body"><div class="meal"><b>酒店 / 机场早餐</b></div></div></div>
+<div class="event"><div class="time">10:30</div><div class="body"><b>TR180 → 南京</b></div></div>
+<div class="event"><div class="time">15:50</div><div class="body"><b>南京落地 + 入境取行李</b></div></div>
+<div class="event"><div class="time">晚上</div><div class="body"><b>南京南 → 杭州</b><div class="desc">高铁待开售，必须留机场到高铁站缓冲。</div></div></div>
+</div></div></details>
+<h2 id="guide">🧭 攻略全部消化后的“现场选择系统”</h2>
+<section class="card">
+<div class="guide-filter"><strong><span class="badge fit">核心</span></strong><div><b>Albany：</b>The Gap + Natural Bridge；Whaling Station 根据天气决定“完整进馆”还是“外部海湾/船只为主”。Wind Farm 天气好才去；Point King、海马壁画是顺路彩蛋。</div></div>
+<div class="guide-filter"><strong><span class="badge fit">核心</span></strong><div><b>Denmark：</b>Greens Pool + Elephant Rocks 保留。2026 有基础设施施工，公园开放但局部路径可能调整。</div></div>
+<div class="guide-filter"><strong><span class="badge todo">取舍</span></strong><div><b>Southern Forests：</b>Valley of the Giants + Ancient Empire 很值得，但10/5必须设置“最晚离开森林”控制点；一旦延误就直接跳过。Dave Evans / Gloucester Tree 不再叠加。</div></div>
+<div class="guide-filter"><strong><span class="badge todo">天气Plan B</span></strong><div><b>Margaret River：</b>观鲸取消后再启动洞穴/海岸备选。优先 Jewel Cave / Lake Cave；Mammoth Cave 适合临时自由进入。Hamelin Bay、Injidup 只选一个，不做景点收集。</div></div>
+<div class="guide-filter"><strong><span class="badge fit">顺路彩蛋</span></strong><div><b>北返：</b>Mandurah Stingray Point 只在提前到达时停 20–30 分钟碰海豚；彩色盐湖同理，看到颜色再停，不专程绕路。</div></div>
+<div class="guide-filter"><strong><span class="badge fit">Rottnest</span></strong><div><b>主线：</b>Henrietta Rocks + Parker Point + 风向决定第三站 + 下午 Quokka。Island Explorer 优先，E-bike 是售罄后的备选。</div></div>
+<div class="guide-filter"><strong><span class="badge skip">不硬排</span></strong><div><b>Canal Rocks、Margaret River Walk、完整酒庄线、Wave Rock、Geraldton/Hutt Lagoon：</b>都保留在灵感库，不破坏这次南线的休息和驾驶节奏。</div></div>
+<div class="guide-filter"><strong><span class="badge risk">无人机</span></strong><div><b>不要照搬博主“飞过=能飞”。</b> 国家公园、Rottnest、盐湖私人土地、机场附近都需要分别核实管理方和 CASA 空域要求；最终以当天现场/官方规则为准。</div></div>
+</section>
+<h2>✨ 另存灵感：Geraldton Horizon Ball</h2>
+<section class="card inspiration">
+<h3>好看，但不属于这次南线</h3>
+<p>你刚补充的 Horizon Ball 我已经真正消化进攻略库：<b>248 Chapman Rd, Beresford WA 6530</b>；日落前约 30 分钟到，一直拍到晚霞；广角从侧面把球体、印度洋和落日一起收进画面。</p>
+<p class="muted">Geraldton 在 Perth 以北，和这次 Esperance–Albany–Margaret River 南线是相反方向。它更适合以后做“珀斯 → Geraldton → Kalbarri / Pinnacles”的北线，而不是为了一个日落装置多开一大段回头路。</p>
+</section>
+<h2 id="todos">✅ 待办清单</h2>
+<section class="card">
+<p class="small muted">按你说的改成可勾选。勾选状态只保存在当前浏览器；分享给朋友，他们自己的勾选不会影响你的页面。</p>
+<div class="progress"><i id="bar"></i></div><div class="small muted" id="pt" style="margin:7px 0 3px"></div>
+<ul class="checklist">
+<li class="checkrow"><input id="c1" type="checkbox"/><label for="c1"><b>购买 9/29 杭州 → 南京高铁</b></label></li>
+<li class="checkrow"><input id="c2" type="checkbox"/><label for="c2"><b>购买 10/9 南京 → 杭州高铁</b></label></li>
+<li class="checkrow"><input id="c3" type="checkbox"/><label for="c3"><b>预订 10/6 Busselton 上午观鲸</b><br/><span class="muted">出票后把准确时间、码头、运营商写进时间轴。</span></label></li>
+<li class="checkrow"><input id="c4" type="checkbox"/><label for="c4"><b>No Birds 改为 10/6 晚还车</b></label></li>
+<li class="checkrow"><input id="c5" type="checkbox"/><label for="c5"><b>Cape Le Grand 入园费 / Parks Pass</b></label></li>
+<li class="checkrow"><input id="c6" type="checkbox"/><label for="c6"><b>确认 Margaret River 10/5 晚餐 / 早餐安排</b></label></li>
+<li class="checkrow"><input id="c7" type="checkbox"/><label for="c7"><b>预订 10/7 Rottnest Island Explorer 巴士</b><br/><span class="muted">旺季官方提示可能售罄。</span></label></li>
+<li class="checkrow"><input id="c8" type="checkbox"/><label for="c8"><b>出发前复核 Greens Pool 施工、B Shed 施工、观鲸海况</b></label></li>
+</ul>
+</section>
+<section class="card" style="margin-top:14px">
+<div class="note small"><b>照片说明：</b>ChatGPT iPhone 文件预览器会拦截部分外部图片，因此行程核心信息、地图和排版全部做成离线 HTML；景点照片继续保留在线来源，发布到普通浏览器 / GitHub Pages 后更适合显示。</div>
+</section>
+</main></div>
+<script>
+const dep=new Date("2026-09-29T00:00:00+08:00").getTime();
+function tick(){let d=Math.max(0,dep-Date.now()),D=Math.floor(d/86400000),H=Math.floor(d%86400000/3600000),M=Math.floor(d%3600000/60000),S=Math.floor(d%60000/1000);document.getElementById("clock").textContent=`${D}天 ${H}时 ${M}分 ${S}秒`} tick();setInterval(tick,1000);
+const boxes=[...document.querySelectorAll('.checkrow input')];
+boxes.forEach(x=>{x.checked=localStorage.getItem('wa_final_'+x.id)==='1';x.onchange=()=>{localStorage.setItem('wa_final_'+x.id,x.checked?'1':'0');upd()}});
+function upd(){const d=boxes.filter(x=>x.checked).length;document.getElementById('bar').style.width=(100*d/boxes.length)+'%';document.getElementById('pt').textContent=d+' / '+boxes.length+' 已完成'}
+upd();
+
+// Graceful fallback for ChatGPT iPhone preview, which may block external images.
+document.querySelectorAll('.spot-photo img').forEach(img=>{img.addEventListener('error',()=>{const fig=img.closest('.spot-photo'); if(!fig) return; const name=img.alt||'景点照片'; img.remove(); fig.classList.add('photo-failed'); fig.insertAdjacentHTML('afterbegin','<span>📷 '+name+' · 发布到普通浏览器 / GitHub Pages 后加载在线实景图</span>');},{once:true});});
+</script>
+<a aria-label="返回顶部" href="#overview" id="toTop">↑</a></body></html>
