@@ -84,6 +84,7 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 @media(max-width:600px){.route-row{grid-template-columns:1fr 76px}.route-time{font-size:11px}}
 
 .packing-card{padding:22px}.packing-head{display:grid;grid-template-columns:210px 1fr;gap:18px;align-items:center;margin:14px 0 22px}.packing-head b{font-size:12px;letter-spacing:.13em;color:var(--teal)}.packing-head span{display:block;font-size:13px;color:var(--sub);margin-top:2px}.packing-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pack-group{border:1px solid #e2e8ec;border-radius:18px;padding:15px 16px;background:#fcfdfd}.pack-group h3{font-size:17px;margin:0 0 7px}.pack-group label{display:grid;grid-template-columns:27px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed #e3e7e9;cursor:pointer}.pack-group label:last-child{border-bottom:0}.pack-group input{appearance:none;width:23px;height:23px;border:2px solid #b9c3c7;border-radius:7px;background:white;position:relative;margin:1px 0 0}.pack-group input:checked{background:var(--teal);border-color:var(--teal)}.pack-group input:checked:after{content:"✓";position:absolute;color:white;font-weight:900;left:4px;top:-4px;font-size:18px}.pack-group input:checked+span>b{text-decoration:line-through;color:#9ba3a8}.pack-group small{display:block;color:#7d8994;font-size:11px;line-height:1.45;margin-top:2px}.pack-alert{margin-top:16px;padding:14px 16px;border-radius:15px;background:#fff4e5;border:1px solid #f2dfc1}.pack-alert b{display:block;color:#9a5b22;margin-bottom:3px}.pack-alert span{font-size:13px;color:#715b46}@media(max-width:700px){.packing-grid{grid-template-columns:1fr}.packing-head{grid-template-columns:1fr;gap:8px}.packing-card{padding:17px}}
+.real-map{padding:10px!important;background:#fff!important}.map-photo{position:relative;overflow:hidden;border-radius:16px;background:#eaf2f2}.map-photo>img{width:100%;display:block;height:auto}.trip-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.map-credit{font-size:10px;color:#8a8f91;padding:7px 5px 0;text-align:right}
 </style>
 </head>
 <body>
@@ -99,39 +100,15 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 <section class="overview-card">
 
 <div class="overview-head"><div><h3>西澳 · 南线自驾</h3><p>Perth → Esperance → Albany → Denmark → Cowaramup → Busselton → Fremantle → Rottnest</p></div><div class="route-stat">约 2,000+ km<br/><span>9晚 · 10天西澳段</span></div></div>
-<div class="wa-map-shell">
-<svg aria-label="Western Australia south coast road trip map" role="img" viewbox="0 0 760 540">
-<defs>
-<lineargradient id="sand" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f4e2bd"></stop><stop offset="1" stop-color="#e6c992"></stop></lineargradient>
-<lineargradient id="sea" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#bfe9ec"></stop><stop offset="1" stop-color="#8ed4d8"></stop></lineargradient>
-<filter id="soft"><fedropshadow dx="0" dy="5" flood-opacity=".12" stddeviation="8"></fedropshadow></filter>
-</defs>
-<rect fill="url(#sea)" height="540" rx="26" width="760"></rect>
-<!-- stylised WA silhouette -->
-<path d="M184 38 L618 38 L627 94 L642 154 L632 213 L655 261 L640 331 L674 388 L658 468 L560 488 L479 505 L401 493 L321 503 L257 487 L219 452 L177 430 L142 377 L128 308 L141 250 L127 187 L145 118 Z" fill="url(#sand)" filter="url(#soft)" stroke="#bd9460" stroke-width="3"></path>
-<!-- terrain contours -->
-<g fill="none" opacity=".45" stroke="#c9a871" stroke-width="1.5">
-<path d="M205 91 C304 64 445 77 566 96"></path><path d="M179 128 C314 101 466 118 601 142"></path><path d="M163 177 C309 151 494 164 615 195"></path><path d="M167 230 C318 210 487 216 619 246"></path><path d="M174 283 C316 267 489 274 628 301"></path><path d="M186 336 C330 320 492 334 633 357"></path><path d="M205 389 C339 370 506 386 638 408"></path>
-</g>
-<path d="M228 162 C289 184 339 220 392 270 C442 318 513 376 606 424" fill="none" opacity=".55" stroke="#a87f48" stroke-width="2.2"></path>
-<text fill="#9a7448" font-size="31" font-weight="750" opacity=".78" x="338" y="198">WESTERN</text>
-<text fill="#9a7448" font-size="31" font-weight="750" opacity=".78" x="329" y="230">AUSTRALIA</text>
-<!-- south-route -->
-<path d="M221 357 C355 359 493 409 604 456 C516 492 431 500 366 492 C323 486 286 472 251 453 C228 440 213 419 208 397" fill="none" stroke="#9f493d" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></path>
-<path d="M208 397 C189 385 171 371 154 357" fill="none" stroke="#283b52" stroke-dasharray="7 7" stroke-width="4"></path>
-<g fill="#26384a" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif" font-size="14" font-weight="700">
-<g><circle cx="221" cy="357" fill="#0f9a8a" r="10"></circle><text x="236" y="353">Perth</text></g>
-<g><circle cx="604" cy="456" fill="#9f493d" r="10"></circle><text x="617" y="460">Esperance</text></g>
-<g><circle cx="470" cy="492" fill="#9f493d" r="10"></circle><text x="482" y="516">Albany</text></g>
-<g><circle cx="409" cy="495" fill="#9f493d" r="10"></circle><text x="370" y="522">Denmark</text></g>
-<g><circle cx="342" cy="486" fill="#9f493d" r="10"></circle><text x="282" y="469">Margaret River</text></g>
-<g><circle cx="279" cy="455" fill="#0f9a8a" r="10"></circle><text x="293" y="452">Busselton</text></g>
-<g><circle cx="208" cy="397" fill="#0f9a8a" r="10"></circle><text x="219" y="418">Fremantle</text></g>
-<g><circle cx="154" cy="357" fill="#283b52" r="10"></circle><text x="89" y="340">Rottnest</text></g>
-</g>
-<g fill="#7d6546" font-size="12"><text x="545" y="435">1 · Esperance</text><text x="425" y="474">2 · Albany</text><text x="318" y="455">3 · South West</text><text x="167" y="380">4 · Fremantle</text></g>
-<g transform="translate(640 68)"><circle cx="0" cy="0" fill="#fff" opacity=".85" r="27"></circle><path d="M0 -18 L5 0 L0 18 L-5 0Z" fill="#26384a"></path><text fill="#26384a" font-size="11" font-weight="800" x="-5" y="-30">N</text></g>
+<div class="wa-map-shell real-map">
+<div class="map-photo">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/SWAHighways.png" alt="Southwest Western Australia road network map"/>
+<svg class="trip-overlay" viewBox="0 0 512 512" aria-label="本次西澳南线自驾路线">
+<polyline points="52,278 433,369 315,468 245,475 178,451 101,390 52,278" fill="none" stroke="#a9473d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#0f9a8a" stroke="#fff" stroke-width="3"><circle cx="52" cy="278" r="8"/><circle cx="433" cy="369" r="8"/><circle cx="315" cy="468" r="8"/><circle cx="245" cy="475" r="8"/><circle cx="178" cy="451" r="8"/><circle cx="101" cy="390" r="8"/></g>
 </svg>
+</div>
+<div class="map-credit">真实西澳西南部公路底图 · 路线为旅行示意叠加 · Basemap: Wikimedia Commons / SWAHighways</div>
 </div>
 <div class="route-footer"><span>🚗 南线主驾：Perth → Esperance → Albany → Denmark → Margaret River → Busselton → Fremantle</span><span>⛴ Rottnest 单独往返</span></div>
 </section>
