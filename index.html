@@ -82,6 +82,8 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 .route-row{display:grid;grid-template-columns:1fr 92px;gap:10px;padding:10px 14px;border-bottom:1px solid #edf1f0;align-items:center}
 .route-row:last-child{border-bottom:0}.route-leg{font-size:13px;font-weight:700;color:#173b39}.route-leg span{display:block;font-size:11px;color:#71807d;font-weight:500;margin-top:3px}.route-time{text-align:right;font-size:12px;font-weight:800;color:#087f73}.route-total{padding:11px 14px;background:#f4f8f7;font-size:12px;color:#45605c;font-weight:700}
 @media(max-width:600px){.route-row{grid-template-columns:1fr 76px}.route-time{font-size:11px}}
+
+.packing-card{padding:22px}.packing-head{display:grid;grid-template-columns:210px 1fr;gap:18px;align-items:center;margin:14px 0 22px}.packing-head b{font-size:12px;letter-spacing:.13em;color:var(--teal)}.packing-head span{display:block;font-size:13px;color:var(--sub);margin-top:2px}.packing-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pack-group{border:1px solid #e2e8ec;border-radius:18px;padding:15px 16px;background:#fcfdfd}.pack-group h3{font-size:17px;margin:0 0 7px}.pack-group label{display:grid;grid-template-columns:27px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed #e3e7e9;cursor:pointer}.pack-group label:last-child{border-bottom:0}.pack-group input{appearance:none;width:23px;height:23px;border:2px solid #b9c3c7;border-radius:7px;background:white;position:relative;margin:1px 0 0}.pack-group input:checked{background:var(--teal);border-color:var(--teal)}.pack-group input:checked:after{content:"✓";position:absolute;color:white;font-weight:900;left:4px;top:-4px;font-size:18px}.pack-group input:checked+span>b{text-decoration:line-through;color:#9ba3a8}.pack-group small{display:block;color:#7d8994;font-size:11px;line-height:1.45;margin-top:2px}.pack-alert{margin-top:16px;padding:14px 16px;border-radius:15px;background:#fff4e5;border:1px solid #f2dfc1}.pack-alert b{display:block;color:#9a5b22;margin-bottom:3px}.pack-alert span{font-size:13px;color:#715b46}@media(max-width:700px){.packing-grid{grid-template-columns:1fr}.packing-head{grid-template-columns:1fr;gap:8px}.packing-card{padding:17px}}
 </style>
 </head>
 <body>
@@ -91,7 +93,7 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 <div class="hero-copy"><h1>Western Australia</h1><p>珀斯 · Esperance · Albany · Denmark · Margaret River · Rottnest</p></div>
 <div class="hero-count"><span>距离出发还有</span><strong id="clock">--天 --小时 --分 --秒</strong></div>
 </header>
-<nav class="tabs"><a href="#flights">航班</a><a href="#overview-map">总览</a><a href="#days-section">行程</a><a href="#drive">自驾</a><a href="#guide">Tips</a><a href="#todos">Todo</a></nav>
+<nav class="tabs"><a href="#flights">航班</a><a href="#overview-map">总览</a><a href="#days-section">行程</a><a href="#drive">自驾</a><a href="#guide">Tips</a><a href="#packing">出发清单</a><a href="#todos">Todo</a></nav>
 <main class="wrap">
 <div class="section-eyebrow">OVERVIEW</div><h2 id="overview-map">行程总览</h2>
 <section class="overview-card">
@@ -323,7 +325,63 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 <p>你刚补充的 Horizon Ball 我已经真正消化进攻略库：<b>248 Chapman Rd, Beresford WA 6530</b>；日落前约 30 分钟到，一直拍到晚霞；广角从侧面把球体、印度洋和落日一起收进画面。</p>
 <p class="muted">Geraldton 在 Perth 以北，和这次 Esperance–Albany–Margaret River 南线是相反方向。它更适合以后做“珀斯 → Geraldton → Kalbarri / Pinnacles”的北线，而不是为了一个日落装置多开一大段回头路。</p>
 </section>
-<h2 id="todos">✅ 待办清单</h2>
+
+<h2 id="packing">🧳 出发前 Checklist</h2>
+<section class="card packing-card">
+<p class="small muted">按这次西澳自驾 + 海边 + 国家公园 + Rottnest + 摄影设备整理。可直接在手机上打勾，状态保存在当前浏览器。</p>
+<div class="packing-head"><div><b>PACKING PROGRESS</b><span id="packpt">0 / 0 已准备</span></div><div class="progress"><i id="packbar"></i></div></div>
+<div class="packing-grid">
+<div class="pack-group"><h3>🔴 证件 · 必须</h3>
+<label><input class="packcheck" id="p01" type="checkbox"><span><b>护照</b><small>随身携带，不托运</small></span></label>
+<label><input class="packcheck" id="p02" type="checkbox"><span><b>澳洲签证 Grant Letter</b><small>手机离线保存 PDF</small></span></label>
+<label><input class="packcheck" id="p03" type="checkbox"><span><b>中国驾照原件</b></span></label>
+<label><input class="packcheck" id="p04" type="checkbox"><span><b>驾照英文翻译件</b><small>建议合规认证翻译，并与原件一起携带</small></span></label>
+<label><input class="packcheck" id="p05" type="checkbox"><span><b>机票 / 酒店 / 租车订单离线版</b></span></label>
+<label><input class="packcheck" id="p06" type="checkbox"><span><b>旅行保险</b><small>医疗、行李、航班延误及租车相关保障</small></span></label>
+</div>
+<div class="pack-group"><h3>🚗 自驾 · 必须</h3>
+<label><input class="packcheck" id="p07" type="checkbox"><span><b>信用卡 × 2</b><small>不同银行更稳妥</small></span></label>
+<label><input class="packcheck" id="p08" type="checkbox"><span><b>Google Maps 离线地图</b><small>Perth → Esperance → Albany → Margaret River → Fremantle</small></span></label>
+<label><input class="packcheck" id="p09" type="checkbox"><span><b>手机支架 + 车充 + 充电线</b></span></label>
+<label><input class="packcheck" id="p10" type="checkbox"><span><b>车上饮用水 + 零食</b><small>长途段当天补足</small></span></label>
+<label><input class="packcheck" id="p11" type="checkbox"><span><b>Emergency WA / Emergency+ App</b></span></label>
+<label><input class="packcheck" id="p12" type="checkbox"><span><b>No Birds 租车条款再确认</b><small>保险 Excess、Esperance remote travel fee、还车时间</small></span></label>
+</div>
+<div class="pack-group"><h3>📱 电子 · 网络</h3>
+<label><input class="packcheck" id="p13" type="checkbox"><span><b>澳洲 eSIM / SIM</b></span></label>
+<label><input class="packcheck" id="p14" type="checkbox"><span><b>澳洲 Type I 转换插头 × 2</b></span></label>
+<label><input class="packcheck" id="p15" type="checkbox"><span><b>多口 GaN 充电器</b></span></label>
+<label><input class="packcheck" id="p16" type="checkbox"><span><b>充电宝</b><small>随身携带</small></span></label>
+<label><input class="packcheck" id="p17" type="checkbox"><span><b>备用 USB-C / 手机充电线</b></span></label>
+</div>
+<div class="pack-group"><h3>📷 摄影 · 你的设备</h3>
+<label><input class="packcheck" id="p18" type="checkbox"><span><b>Fujifilm X-T5 + 18–50mm</b></span></label>
+<label><input class="packcheck" id="p19" type="checkbox"><span><b>XF 70–300mm</b><small>观鲸当天最值得带</small></span></label>
+<label><input class="packcheck" id="p20" type="checkbox"><span><b>相机电池 × 2–3 + SD 卡 × 2</b></span></label>
+<label><input class="packcheck" id="p21" type="checkbox"><span><b>DJI Pocket 3</b></span></label>
+<label><input class="packcheck" id="p22" type="checkbox"><span><b>拍立得 + 相纸</b></span></label>
+<label><input class="packcheck" id="p23" type="checkbox"><span><b>无人机 + 遥控器 + ND</b></span></label>
+<label><input class="packcheck" id="p24" type="checkbox"><span><b>无人机备用电池随身</b><small>不要放托运行李；按航空公司电池规则执行</small></span></label>
+</div>
+<div class="pack-group"><h3>🧥 衣物 · 海边天气</h3>
+<label><input class="packcheck" id="p25" type="checkbox"><span><b>防风外套</b><small>Esperance / Albany / 观鲸 / Rottnest 高频使用</small></span></label>
+<label><input class="packcheck" id="p26" type="checkbox"><span><b>轻薄防水外套 / 折叠伞</b></span></label>
+<label><input class="packcheck" id="p27" type="checkbox"><span><b>T恤 + 长袖 + 薄针织/卫衣</b><small>分层穿衣</small></span></label>
+<label><input class="packcheck" id="p28" type="checkbox"><span><b>长裤 + 少量短裤</b></span></label>
+<label><input class="packcheck" id="p29" type="checkbox"><span><b>舒适运动鞋</b><small>国家公园 / Rottnest 主力</small></span></label>
+<label><input class="packcheck" id="p30" type="checkbox"><span><b>泳衣 / 拖鞋</b><small>按天气决定是否使用</small></span></label>
+</div>
+<div class="pack-group"><h3>☀️ 防晒 · 日用 · 药品</h3>
+<label><input class="packcheck" id="p31" type="checkbox"><span><b>SPF50+ 防晒</b></span></label>
+<label><input class="packcheck" id="p32" type="checkbox"><span><b>墨镜 + 帽子</b></span></label>
+<label><input class="packcheck" id="p33" type="checkbox"><span><b>护肤 / 洗漱 / 防晒唇膏</b></span></label>
+<label><input class="packcheck" id="p34" type="checkbox"><span><b>常用药 + 创可贴</b><small>处方药保留原包装和相关证明</small></span></label>
+<label><input class="packcheck" id="p35" type="checkbox"><span><b>晕船药</b><small>10/6 Busselton 观鲸备用</small></span></label>
+<label><input class="packcheck" id="p36" type="checkbox"><span><b>折叠购物袋 + 湿巾 / 纸巾</b></span></label>
+</div>
+</div>
+<div class="pack-alert"><b>⚠️ 出发前最后确认</b><span>澳洲入境食品/动植物制品不确定就申报；国家公园 Pass 如购买需按 DBCA 当前要求打印展示；9/30 落地后长途开往 Esperance，优先保证睡眠并每约 2 小时休息/换驾驶员。</span></div>
+</section><h2 id="todos">✅ 待办清单</h2>
 <section class="card">
 <p class="small muted">按你说的改成可勾选。勾选状态只保存在当前浏览器；分享给朋友，他们自己的勾选不会影响你的页面。</p>
 <div class="progress"><i id="bar"></i></div><div class="small muted" id="pt" style="margin:7px 0 3px"></div>
@@ -349,6 +407,10 @@ const boxes=[...document.querySelectorAll('.checkrow input')];
 boxes.forEach(x=>{x.checked=localStorage.getItem('wa_final_'+x.id)==='1';x.onchange=()=>{localStorage.setItem('wa_final_'+x.id,x.checked?'1':'0');upd()}});
 function upd(){const d=boxes.filter(x=>x.checked).length;document.getElementById('bar').style.width=(100*d/boxes.length)+'%';document.getElementById('pt').textContent=d+' / '+boxes.length+' 已完成'}
 upd();
+const packboxes=[...document.querySelectorAll('.packcheck')];
+packboxes.forEach(x=>{x.checked=localStorage.getItem('wa_pack_'+x.id)==='1';x.onchange=()=>{localStorage.setItem('wa_pack_'+x.id,x.checked?'1':'0');packupd()}});
+function packupd(){const d=packboxes.filter(x=>x.checked).length;const b=document.getElementById('packbar'),t=document.getElementById('packpt');if(b)b.style.width=(100*d/Math.max(1,packboxes.length))+'%';if(t)t.textContent=d+' / '+packboxes.length+' 已准备'}
+packupd();
 
 // Graceful fallback for ChatGPT iPhone preview, which may block external images.
 document.querySelectorAll('.spot-photo img').forEach(img=>{img.addEventListener('error',()=>{const fig=img.closest('.spot-photo'); if(!fig) return; const name=img.alt||'景点照片'; img.remove(); fig.classList.add('photo-failed'); fig.insertAdjacentHTML('afterbegin','<span>📷 '+name+' · 发布到普通浏览器 / GitHub Pages 后加载在线实景图</span>');},{once:true});});
