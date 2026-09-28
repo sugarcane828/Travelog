@@ -92,7 +92,7 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 <header class="hero hero-v6" id="overview">
 <div class="hero-kicker">WA / 2026</div>
 <div class="hero-copy"><h1>Western Australia</h1><p>珀斯 · Esperance · Albany · Denmark · Margaret River · Rottnest</p></div>
-<div class="hero-count"><span>距离出发还有</span><strong id="clock">--天 --小时 --分 --秒</strong></div>
+<div class="hero-count"><span>距离西澳之旅出发还有</span><strong id="clock">--天 --小时 --分 --秒</strong></div>
 </header>
 <nav class="tabs"><a href="#flights">航班</a><a href="#overview-map">总览</a><a href="#days-section">行程</a><a href="#drive">自驾</a><a href="#guide">Tips</a><a href="#packing">出发清单</a><a href="#todos">Todo</a></nav>
 <main class="wrap">
@@ -154,7 +154,8 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 <div class="daybody">
 <div class="weatherlook"><div><div class="weather-main"><div class="weather-icon">🌤️</div><div><div class="weather-temp">南京约 20–27°C · 新加坡约 26–31°C</div><div class="weather-desc">跨城飞行，南京初秋偏暖；新加坡炎热潮湿</div></div></div><div class="weather-note">气温为季节气候参考，非最终逐日预报</div></div><div><div class="look-title">WHAT TO WEAR · 穿搭建议</div><div class="look-text">短袖/薄衬衫 + 轻薄长裤；飞机上加薄针织或轻外套。建议奶油白、灰蓝等低饱和配色，兼顾机场拍照。</div></div></div><div class="timeline">
 <div class="event"><div class="time">早餐</div><div class="body"><div class="meal"><b>杭州正常吃早餐</b></div></div></div>
-<div class="event"><div class="time">上午</div><div class="body"><b>杭州 → 南京南</b><div class="desc">高铁待开售，选择宁早不晚的车次。</div></div></div>
+<div class="event"><div class="time">13:20</div><div class="body"><b>🚄 D3236 · 杭州东 → 南京南</b><div class="desc">13:20 杭州东出发 · 14:44 南京南到达 · 二等座 · 车程 1小时24分。到站后直接前往南京禄口国际机场。</div></div></div>
+<div class="event"><div class="time">14:50</div><div class="body"><b>🚇 南京南站 → 南京禄口国际机场 T2</b><div class="desc">推荐直接乘南京地铁 S1 号线（机场线），南京南站上车 → 禄口机场站下车；无需换乘。按约 35–45 分钟车程 + 进站步行计算，预计约 15:35–15:45 到机场，距离 17:05 航班仍有约 1小时20分。</div><div class="note small"><b>不要在南京南站吃正餐。</b> 下高铁后直接去 S1；若取行李/找地铁耽搁，建议直接打车去机场。</div></div></div></div>
 <div class="event"><div class="time">午餐</div><div class="body"><div class="meal"><b>南京南 / 禄口机场正常吃午餐</b></div></div></div>
 <div class="event"><div class="time">17:05</div><div class="body"><b>TR181 南京 → 新加坡</b></div></div>
 <div class="event"><div class="time">22:20</div><div class="body"><b>抵达 Changi T1</b><div class="desc">转机期间吃夜宵，为 03:00 航班补体力。</div></div></div>
@@ -376,7 +377,7 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 <p class="small muted">按你说的改成可勾选。勾选状态只保存在当前浏览器；分享给朋友，他们自己的勾选不会影响你的页面。</p>
 <div class="progress"><i id="bar"></i></div><div class="small muted" id="pt" style="margin:7px 0 3px"></div>
 <ul class="checklist">
-<li class="checkrow"><input id="c1" type="checkbox"/><label for="c1"><b>购买 9/29 杭州 → 南京高铁</b></label></li>
+<li class="checkrow"><input id="c1" type="checkbox"/><label for="c1"><b>9/29 杭州 → 南京高铁 · 已购买</b><br/><span class="muted">D3236 · 13:20 杭州东 → 14:44 南京南</span></label></li>
 <li class="checkrow"><input id="c2" type="checkbox"/><label for="c2"><b>购买 10/9 南京 → 杭州高铁</b></label></li>
 <li class="checkrow"><input id="c3" type="checkbox"/><label for="c3"><b>预订 10/6 Busselton 上午观鲸</b><br/><span class="muted">出票后把准确时间、码头、运营商写进时间轴。</span></label></li>
 <li class="checkrow"><input id="c4" type="checkbox"/><label for="c4"><b>No Birds 改为 10/6 晚还车</b></label></li>
@@ -391,7 +392,7 @@ h2{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:13px 0 24px}.sec
 </section>
 </main></div>
 <script>
-const dep=new Date("2026-09-29T00:00:00+08:00").getTime();
+const dep=new Date("2026-09-29T13:20:00+08:00").getTime();
 function tick(){let d=Math.max(0,dep-Date.now()),D=Math.floor(d/86400000),H=Math.floor(d%86400000/3600000),M=Math.floor(d%3600000/60000),S=Math.floor(d%60000/1000);document.getElementById("clock").textContent=`${D}天 ${H}时 ${M}分 ${S}秒`} tick();setInterval(tick,1000);
 const boxes=[...document.querySelectorAll('.checkrow input')];
 boxes.forEach(x=>{x.checked=localStorage.getItem('wa_final_'+x.id)==='1';x.onchange=()=>{localStorage.setItem('wa_final_'+x.id,x.checked?'1':'0');upd()}});
